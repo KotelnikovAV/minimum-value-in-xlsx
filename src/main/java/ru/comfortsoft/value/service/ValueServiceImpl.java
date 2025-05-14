@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.comfortsoft.value.dto.SearchConditionDto;
 import ru.comfortsoft.value.search.factory.SelectorFactory;
-import ru.comfortsoft.value.search.reader.ValueReader;
 import ru.comfortsoft.value.search.factory.ValueReaderFactory;
+import ru.comfortsoft.value.search.reader.ValueReader;
 import ru.comfortsoft.value.search.selector.Selector;
 
 @Service
@@ -17,7 +17,7 @@ public class ValueServiceImpl implements ValueService {
     @Override
     public int findMinimumValue(SearchConditionDto searchCondition) {
         String format = getFormat(searchCondition.getPath());
-        ValueReader reader = readerFactory.getEngine(format);
+        ValueReader reader = readerFactory.getReader(format);
 
         int[] numbers = reader.readValues(searchCondition.getPath());
         Selector selector = selectorFactory.getSelector(numbers.length);

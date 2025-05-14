@@ -13,7 +13,7 @@ import java.util.Optional;
 public class ValueReaderFactory {
     private final Map<String, ValueReader> readers;
 
-    public ValueReader getEngine(String format) {
+    public ValueReader getReader(String format) {
         return Optional.ofNullable(readers.get(format + "ValueReader"))
                 .orElseThrow(() -> new UnsupportedFileFormatException("Unsupported format: " + format));
     }
